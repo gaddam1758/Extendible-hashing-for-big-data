@@ -12,11 +12,32 @@ class Bucket:
         self.size = bucket_size
         self.idx = 0
     
-    def insert(record):
-        spaces[idx] = record
+    def insert(self,record):
+        self.spaces[idx] = record
 
-        free_spaces-=1
-        idx+=1
+        self.free_spaces-=1
+        self.idx+=1
+    
+    def pop(self):
+        self.free_spaces+=1
+        self.idx-=1
+
+        temp  = self.spaces[0]
+        np.delete(self.spaces,0)
+
+        return temp
+    
+    def clean(self):
+        self.is_last = True
+        self.free_spaces = self.size
+        self.overflow_link = None
+    
+    def getRecords(self):
+
+        ls = []
+        for i in range(self.size - self.free_spaces):
+            ls.append(spaces[i])
+        
         
 
 
