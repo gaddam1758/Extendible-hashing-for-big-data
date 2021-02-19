@@ -8,4 +8,5 @@ class Bucket:
         self.overflow_link = None
         self.is_last = False
         self.free_spaces = bucket_size
+        self.local_depth = 0
 
