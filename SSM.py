@@ -1,7 +1,7 @@
 import numpy as np
-import Bucket
+from Bucket import Bucket
 
-class SSM:
+class SimulatedSecondaryMemory:
 
     def __init__(self,size, record_bucket_size, directory_bucket_size):
         self.size = size
@@ -20,22 +20,21 @@ class SSM:
     ##returns index
     def getRecordBucket(self):
         b = Bucket(self.record_bucket_size)
-        self.Memory[start_index] = b
-        start_index+=1
-        return start_index-1
+        self.Memory[self.start_index] = b
+        self.start_index+=1
+        return self.start_index-1
     
     def getDirectoryBucket(self):
         b = Bucket(self.directory_bucket_size)
-        self.Memory[end_index] = b
-        end_index-=1
+        self.Memory[self.end_index] = b
+        self.end_index-=1
 
-        return end_index+1
+        return self.end_index+1
 
 
 
     def getOverflowBucket(self):
-        b  = bucket(self.record_bucket_size)
-        self.Memory[end_index] = b
-        end_index-=1
+        b  = Bucket(self.record_bucket_size)
+        self.Memory[self.end_index] = b
+        self.end_index-=1
     
-
